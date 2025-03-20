@@ -20,5 +20,6 @@ import users.views as UserViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('save_user/', UserViews.save_user)
+    path('save_user/', UserViews.save_user),
+    path('get_user/', UserViews.get_user)
 ]
