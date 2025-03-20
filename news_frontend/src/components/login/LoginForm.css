@@ -1,0 +1,102 @@
+/* Dark Mode Login Form */
+#login-form {
+    width: 400px;
+    max-width: 100%;
+    margin: 50px auto;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    font-family: "Poppins", sans-serif;
+    padding-bottom: 20px;
+  }
+  
+  #login-form h1 {
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #333;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  #login-form form {
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  #login-form form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #bbbbbb;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  #login-form form input[type="text"],
+  #login-form form input[type="password"],
+  #login-form form input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  
+  #login-form form input[type="text"]::placeholder,
+  #login-form form input[type="password"]::placeholder,
+  #login-form form input[type="email"]::placeholder {
+    color: #888888;
+  }
+  
+  #login-form form input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007acc;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  #login-form form input[type="submit"]:hover {
+    background-color: #005fa3;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  }
+  
+  .toggle-button {
+    background: none;
+    border: none;
+    color: #007acc;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .toggle-button:hover {
+    background-color: #007acc;
+    color: white;
+  }
+  
+  .toggle-text {
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: #bbbbbb;
+  }
+  
