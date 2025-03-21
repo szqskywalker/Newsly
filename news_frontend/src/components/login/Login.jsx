@@ -21,6 +21,7 @@ function Login({ proceed }) {
   };
 
   const handleChange = (e) => {
+    setResponseMessage("");
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
