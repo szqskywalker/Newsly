@@ -16,21 +16,21 @@ class User(models.Model):
     email = models.TextField(unique=True, max_length=256, null=False)
     # User birth day
     b_day = models.IntegerField(
-            null=False,
+            null=True,
             choices=(
                 (i, i) for i in range(1, 31)
             )
     )
     # User birth month
     b_month = models.IntegerField(
-            null=False,
+            null=True,
             choices=(
                 (i, i) for i in range(1, 12)
             )
     )
     # User birth year
     b_year = models.IntegerField(
-            null=False,
+            null=True,
             choices=(
                 (i, i) for i in range(1900, int(datetime.now().year))
             )

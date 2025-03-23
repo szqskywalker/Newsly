@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-0b0ya8ny8xl+savt%x)wi+3fqhnd%0jw1dh+6p070-^&@nqgw9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "https://a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app",
+    "a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app"
+]
 
 
 # Application definition
@@ -133,6 +136,8 @@ CORS_ALLOW_ALL_ORIGINS = True  # Allows all domains (Use only for development)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Vite frontend
     "http://127.0.0.1:5173",
+    "https://a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app",
+    "https://a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app"
 ]
 
 CORS_ALLOW_METHODS = [

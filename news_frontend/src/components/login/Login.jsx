@@ -1,42 +1,27 @@
 import React, { useState } from "react";
+import { callVerifyAPI, callNewUserAPI } from "../../api";
 import "./LoginForm.css";
 
-async function callVerifyAPI(userid, password) {
-  try {
-    const response = await fetch("http://localhost:8000/get_user/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username: userid, password: password }),
-    });
+const defaultFormData = {
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
-    if (!response.ok) {
-      throw new Error("Failed to verify user");
-    }
-
-    const data = await response.json();
-    console.log("API Response:", data);
-    return data;
-  } catch (error) {
-    console.error("Error verifying user:", error);
-  }
-}
-
-function Login() {
+function Login({ proceed }) {
   const [isSignup, setIsSignup] = useState(false);
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const [formData, setFormData] = useState(defaultFormData);
+  const [responseMessage, setResponseMessage] = useState("");
 
   const toggleForm = () => {
     setIsSignup(!isSignup);
+    setResponseMessage("");
+    setFormData(defaultFormData);
   };
 
   const handleChange = (e) => {
+    setResponseMessage("");
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -48,7 +33,25 @@ function Login() {
     console.log("Form Data:", formData);
 
     if (!isSignup) {
-      await callVerifyAPI(formData.username, formData.password);
+      await callVerifyAPI(
+        formData.username,
+        formData.password,
+        setResponseMessage,
+        proceed
+      );
+    } else {
+      if (formData.confirmPassword != formData.password) {
+        setResponseMessage("Passwords Do Not Match");
+      } else {
+        console.log("Calling the api");
+        await callNewUserAPI(
+          formData.username,
+          formData.email,
+          formData.password,
+          setResponseMessage,
+          proceed
+        );
+      }
     }
   };
 
@@ -116,6 +119,7 @@ function Login() {
     <div id="login-form">
       <h1>{isSignup ? "Sign Up" : "Login"}</h1>
       {renderForm()}
+      {responseMessage && <p className="response-message">{responseMessage}</p>}
       <p>
         {isSignup ? "Already have an account?" : "Don't have an account?"}
         <button type="button" onClick={toggleForm} className="toggle-button">

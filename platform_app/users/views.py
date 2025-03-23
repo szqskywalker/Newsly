@@ -7,12 +7,25 @@ import json
 
 @csrf_exempt
 def save_user(request):
-    import pdb; pdb.set_trace()
-    data = {
-        'message': 'Success',
-        'status': 200,
+    data = json.loads(request.body)
+    user_name = data['user_name']
+    if User.objects.filter(user_name=user_name):
+        data = {
+        'message': 'Username already taken!',
+        'status': 204,
         'data': {}
-    }
+        }
+    else:
+        obj = User.objects.create(**data)
+        data = {
+        'message': 'User created successfully!',
+        'status': 200,
+        'data': {
+            'id': obj.pk,
+            'user_name': obj.user_name,
+            'email': obj.email
+            }
+        }
     return JsonResponse(data)
 
 @csrf_exempt
@@ -20,23 +33,32 @@ def get_user(request):
     data = json.loads(request.body)
     user_name = data.get('username')
     user_pwd = data.get('password')
-    # TODO very the user password
 
     if User.objects.filter(user_name=user_name):
         print('User is found!')
-        data = {
-            'message': 'Success',
-            'status': 200,
-            'data': {
+        if User.objects.filter(
+            user_name=user_name,
+            user_pwd=user_pwd
+        ):
+            data = {
+                'message': 'Success',
+                'status': 200,
+                'data': {
+                }
             }
-        }
+        else:
+            data = {
+                'message': 'Incorrect password!',
+                'status': 204,
+                'data': {
+                }
+            }
     else:
         print('No user exists!')
         data = {
-            'message': 'Fail',
+            'message': 'User does not exist!',
             'status': 204,
             'data': {
             }
     }
-    
     return JsonResponse(data)
