@@ -37,5 +37,18 @@ class User(models.Model):
     )
     # Last log in
     last_sign_in = models.DateTimeField(default=datetime.now)
-    # TODO User filters
+
+    # Users default filter
+    filter = models.OneToOneField(
+        'users.Filters',
+        blank=True,
+        null=True, 
+        default=None,
+        on_delete=models.CASCADE
+    )
     # TODO User collections
+
+
+class Filters(models.Model):
+    name = models.CharField(default='Filter 1', max_length=256)
+
