@@ -26,8 +26,14 @@ SECRET_KEY = 'django-insecure-0b0ya8ny8xl+savt%x)wi+3fqhnd%0jw1dh+6p070-^&@nqgw9
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "https://a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app",
-    "a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app"
+    "a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app",
+    "a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app",
+    "419a-155-246-151-34.ngrok-free.app",
+    "1f3e-2600-4041-44a7-d900-fc37-bec4-112e-12c1.ngrok-free.app",
+    "c9d5-2600-4041-44a7-d900-fc37-bec4-112e-12c1.ngrok-free.app",
+    "d8e3-155-246-151-34.ngrok-free.app",
+    "419a-155-246-151-34.ngrok-free.app",
+    "localhost"
 ]
 
 
@@ -136,8 +142,10 @@ CORS_ALLOW_ALL_ORIGINS = True  # Allows all domains (Use only for development)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Vite frontend
     "http://127.0.0.1:5173",
-    "https://a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app",
-    "https://a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app"
+    "https://d8e3-155-246-151-34.ngrok-free.app",
+    "https://419a-155-246-151-34.ngrok-free.app",
+    "https://1f3e-2600-4041-44a7-d900-fc37-bec4-112e-12c1.ngrok-free.app",
+    "https://c9d5-2600-4041-44a7-d900-fc37-bec4-112e-12c1.ngrok-free.app",
 ]
 
 CORS_ALLOW_METHODS = [
