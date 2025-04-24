@@ -5,11 +5,17 @@ import "./App.css";
 
 function App() {
   const [proceedMainPage, setProceedMainPage] = useState(false);
-  if (!proceedMainPage) {
-    return <Login proceed={setProceedMainPage} />;
-  } else {
-    return <MainPage />;
-  }
-}
 
+  return (
+    <div className="min-h-screen w-full bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a] text-white flex justify-center px-4 py-6">
+      <div className="w-full max-w-screen-xl">
+        {!proceedMainPage ? (
+          <Login proceed={setProceedMainPage} />
+        ) : (
+          <MainPage />
+        )}
+      </div>
+    </div>
+  );
+}
 export default App;

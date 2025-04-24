@@ -79,14 +79,14 @@ export default function MainPage() {
   };
 
   return (
-    <div className="min-h-screen p-6 bg-gray-100 text-black font-sans">
+    <div className="w-full min-h-screen bg-[#1e1e1e] text-white p-6">
       <FilterForm
         filters={filters}
         setFilters={setFilters}
         onSearch={onSearch}
         sources={sources}
       />
-      <div className="flex gap-4">
+      <div className="flex gap-2">
         <NewsTable
           articles={articles}
           page={page}

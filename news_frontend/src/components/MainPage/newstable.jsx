@@ -11,8 +11,31 @@ export default function NewsTable({
   expandedIds,
   setExpandedIds,
 }) {
-  const theme = useTheme(getTheme());
-  const articlesPerPage = 5;
+  const theme = useTheme([
+    getTheme(),
+    {
+      Table: `
+        --data-table-library_grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+        background-color: #1f1f1f;
+        color: #e5e5e5;
+      `,
+      HeaderRow: `
+        background-color: #111827;
+        font-weight: bold;
+        color: #f9fafb;
+      `,
+      Row: `
+        background-color: #1f2937;
+        border-bottom: 1px solid #374151;
+        transition: background 0.2s;
+      `,
+      Row_hover: `
+        background-color: #374151;
+      `,
+    },
+  ]);
+
+  const articlesPerPage = 10;
   const totalPages = Math.ceil(articles.length / articlesPerPage);
   const paginatedArticles = articles.slice(
     (page - 1) * articlesPerPage,
@@ -20,11 +43,11 @@ export default function NewsTable({
   );
 
   const handleExpand = (item) => {
-    if (expandedIds.includes(item.url)) {
-      setExpandedIds(expandedIds.filter((id) => id !== item.url));
-    } else {
-      setExpandedIds([...expandedIds, item.url]);
-    }
+    setExpandedIds((prev) =>
+      prev.includes(item.url)
+        ? prev.filter((id) => id !== item.url)
+        : [...prev, item.url]
+    );
   };
 
   const COLUMNS = [
@@ -41,7 +64,7 @@ export default function NewsTable({
       renderCell: (item) => (
         <button
           onClick={() => handleSave(item)}
-          className="text-white bg-black px-3 py-1 rounded hover:bg-gray-700"
+          className="bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white text-sm font-medium px-3 py-1 rounded shadow transition duration-200"
         >
           Save
         </button>
@@ -115,8 +138,8 @@ export default function NewsTable({
   const data = { nodes: paginatedArticles };
 
   return (
-    <div className="w-[65%] bg-white p-4 rounded shadow-md">
-      <h2 className="text-xl font-bold mb-4 text-black">Filtered News</h2>
+    <div className="w-[65%] bg-[#1a1a1a] p-4 rounded-xl shadow-md text-white h-[650px] shadow-lg border border-gray-700">
+      <h2 className="text-2xl font-semibold mb-5 text-white">Filtered News</h2>
       <CompactTable
         columns={COLUMNS}
         data={data}
@@ -124,21 +147,21 @@ export default function NewsTable({
         rowProps={ROW_PROPS}
         rowOptions={ROW_OPTIONS}
       />
-      <div className="flex justify-between items-center mt-4">
+      <div className="flex justify-between items-center mt-6">
         <button
           onClick={() => setPage((p) => Math.max(p - 1, 1))}
           disabled={page === 1}
-          className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+          className="bg-gray-700 text-white px-3 py-1 rounded disabled:opacity-40 hover:bg-gray-600 transition"
         >
           &lt; Prev
         </button>
-        <span className="text-sm text-gray-600">
+        <span className="text-sm text-gray-400">
           Page {page} of {totalPages}
         </span>
         <button
           onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
           disabled={page === totalPages}
-          className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
+          className="bg-gray-700 text-white px-3 py-1 rounded disabled:opacity-40 hover:bg-gray-600 transition"
         >
           Next &gt;
         </button>
