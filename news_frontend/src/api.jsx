@@ -1,9 +1,7 @@
 // Call the different backend API's
 
-//const API_BASE_URL =
-//  "https://c9d5-2600-4041-44a7-d900-fc37-bec4-112e-12c1.ngrok-free.app";
-
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL =
+  "https://2c13-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app";
 
 export async function callVerifyAPI(
   userid,

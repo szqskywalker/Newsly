@@ -33,6 +33,8 @@ ALLOWED_HOSTS = [
     "c9d5-2600-4041-44a7-d900-fc37-bec4-112e-12c1.ngrok-free.app",
     "d8e3-155-246-151-34.ngrok-free.app",
     "419a-155-246-151-34.ngrok-free.app",
+    "2c13-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app",
+    "a227-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app",
     "localhost"
 ]
 
@@ -146,6 +148,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://419a-155-246-151-34.ngrok-free.app",
     "https://1f3e-2600-4041-44a7-d900-fc37-bec4-112e-12c1.ngrok-free.app",
     "https://c9d5-2600-4041-44a7-d900-fc37-bec4-112e-12c1.ngrok-free.app",
+    "https://2c13-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app",
+    "https://a227-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app"
 ]
 
 CORS_ALLOW_METHODS = [
@@ -163,4 +167,5 @@ CORS_ALLOW_HEADERS = [
     "accept",
     "origin",
     "x-csrf-token",
+    "ngrok-skip-browser-warning"
 ]

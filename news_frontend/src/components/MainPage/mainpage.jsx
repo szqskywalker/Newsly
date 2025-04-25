@@ -4,6 +4,8 @@ import NewsTable from "./newstable";
 import SavedCollection from "./savedcollection";
 
 const API_KEY = "3d83b1afc782411490c8c8ebde73f320";
+const API_BASE_URL =
+  "https://2c13-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app";
 
 export default function MainPage() {
   const [articles, setArticles] = useState([]);
@@ -14,7 +16,11 @@ export default function MainPage() {
   const [sources, setSources] = useState([]);
 
   useEffect(() => {
-    fetch(`https://newsapi.org/v2/top-headlines/sources?apiKey=${API_KEY}`)
+    fetch(`${API_BASE_URL}/get_sources/`, {
+      headers: {
+        "ngrok-skip-browser-warning": "true",
+      },
+    })
       .then((res) => res.json())
       .then((data) => setSources(data.sources))
       .catch((err) => console.error("Error fetching sources:", err));
@@ -61,8 +67,12 @@ export default function MainPage() {
       return;
     }
 
-    const url = `https://newsapi.org/v2/everything?${buildQueryParams()}`;
-    fetch(url)
+    const url = `${API_BASE_URL}/search_news/?${buildQueryParams()}`;
+    fetch(url, {
+      headers: {
+        "ngrok-skip-browser-warning": "true",
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "error") throw new Error(data.message);

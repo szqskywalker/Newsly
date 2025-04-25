@@ -1,3 +1,5 @@
+import requests
+from django.views.decorators.http import require_GET
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from users.models import User
@@ -62,3 +64,22 @@ def get_user(request):
             }
     }
     return JsonResponse(data)
+
+@require_GET
+@csrf_exempt
+def get_sources(request):
+    api_key = "3d83b1afc782411490c8c8ebde73f320"
+    url = f'https://newsapi.org/v2/top-headlines/sources?apiKey={api_key}'
+    response = requests.get(url)
+    return JsonResponse(response.json())
+
+@csrf_exempt
+def search_news(request):
+    api_key = "3d83b1afc782411490c8c8ebde73f320"
+    base_url = "https://newsapi.org/v2/everything"
+
+    query_params = request.GET.urlencode()
+    url = f"{base_url}?{query_params}&apiKey={api_key}"
+
+    response = requests.get(url)
+    return JsonResponse(response.json())
