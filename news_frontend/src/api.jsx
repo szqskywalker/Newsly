@@ -1,7 +1,7 @@
 // Call the different backend API's
 
 const API_BASE_URL =
-  "https://2c13-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app";
+  "https://newsly-backend-2l4l.onrender.com";
 
 export async function callVerifyAPI(
   userid,
