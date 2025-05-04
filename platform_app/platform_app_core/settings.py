@@ -147,7 +147,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "https://newsly-backend-2l4l.onrender.com",
     "https://newsly-7mvn.onrender.com",
-    "newsly-7mvn.onrender.com"
 ]
 
 CORS_ALLOW_METHODS = [
