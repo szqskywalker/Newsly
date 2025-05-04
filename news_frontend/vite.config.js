@@ -19,5 +19,5 @@ export default defineConfig({
       "a227-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app",
     ],
     cors: true, // Ensure CORS is enabled
-  },
+  },}
 });
