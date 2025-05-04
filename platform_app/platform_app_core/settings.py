@@ -36,7 +36,6 @@ ALLOWED_HOSTS = [
     "2c13-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app",
     "a227-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app",
     "localhost",
-    "https://newsly-backend-2l4l.onrender.com",
     "newsly-backend-2l4l.onrender.com"
 ]
 
