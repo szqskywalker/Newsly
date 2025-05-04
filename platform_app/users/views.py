@@ -1,3 +1,5 @@
+
+import os
 import requests
 from django.views.decorators.http import require_GET
 from django.views.decorators.csrf import csrf_exempt
@@ -68,7 +70,7 @@ def get_user(request):
 @require_GET
 @csrf_exempt
 def get_sources(request):
-    api_key = "3d83b1afc782411490c8c8ebde73f320"
+    api_key = os.getenv('NEWS_API_KEY')
     url = f'https://newsapi.org/v2/top-headlines/sources?apiKey={api_key}'
     response = requests.get(url)
     return JsonResponse(response.json())
