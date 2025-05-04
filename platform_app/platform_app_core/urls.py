@@ -24,4 +24,5 @@ urlpatterns = [
     path('get_user/', UserViews.get_user),
     path('get_sources/', UserViews.get_sources),
     path('search_news/', UserViews.search_news)
+    path('health/', UserViews.health)
 ]

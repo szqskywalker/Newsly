@@ -85,3 +85,7 @@ def search_news(request):
 
     response = requests.get(url)
     return JsonResponse(response.json())
+
+@csrf_exempt
+def health(request):
+    return JsonResponse({"status": "ok"})
