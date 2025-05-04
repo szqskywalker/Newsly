@@ -144,7 +144,8 @@ CORS_ALLOW_ALL_ORIGINS = True  # Allows all domains (Use only for development)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Vite frontend
     "http://127.0.0.1:5173",
-    "https://newsly-backend-2l4l.onrender.com"
+    "https://newsly-backend-2l4l.onrender.com",
+    "https://newsly-7mvn.onrender.com"
 ]
 
 CORS_ALLOW_METHODS = [
