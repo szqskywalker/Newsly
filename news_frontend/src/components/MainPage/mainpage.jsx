@@ -3,9 +3,7 @@ import FilterForm from "./filterform";
 import NewsTable from "./newstable";
 import SavedCollection from "./savedcollection";
 
-const API_KEY = "3d83b1afc782411490c8c8ebde73f320";
-const API_BASE_URL =
-  "https://2c13-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app";
+const API_BASE_URL = "https://newsly-7mvn.onrender.com";
 
 export default function MainPage() {
   const [articles, setArticles] = useState([]);
