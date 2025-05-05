@@ -34,8 +34,8 @@ export default function MainPage() {
         return res.json();
       })
       .then((data) => {
-        const parsed = JSON.parse(data.contents); // AllOrigins returns `contents` as string
-        setSources(parsed.sources);
+        const parsed = JSON.parse(data.contents); // AllOrigins wraps the response
+        setSources(parsed.sources); // Set actual source list
       })
       .catch((err) => console.error("Error fetching sources:", err));
   }, []);
