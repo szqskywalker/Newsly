@@ -76,11 +76,20 @@ def get_sources(request):
         "apiKey": "3d83b1afc782411490c8c8ebde73f320"
     }
 
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/113.0.0.0 Safari/537.36",
+        "Accept": "application/json"
+    }
+
     try:
-        res = scraper.get(url, params=params)
-        print(res)
+        res = scraper.get(url, params=params, headers=headers)
+        print("Status Code:", res.status_code)
+        print("Response Dict:", res.__dict__)  # Debug: full response metadata
         return JsonResponse(res.json(), safe=False)
     except Exception as e:
+        print("Error:", str(e))
         return JsonResponse({"error": str(e)}, status=500)
 
 @csrf_exempt
