@@ -103,7 +103,7 @@ def search_news(request):
     }
     api_key = "3d83b1afc782411490c8c8ebde73f320"
     base_url = "https://newsapi.org/v2/everything"
-
+    api_key = "3d83b1afc782411490c8c8ebde73f320"
     query_params = request.GET.urlencode()
     url = f"{base_url}?{query_params}&apiKey={api_key}"
 
