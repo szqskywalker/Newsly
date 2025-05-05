@@ -3,7 +3,7 @@ import FilterForm from "./filterform";
 import NewsTable from "./newstable";
 import SavedCollection from "./savedcollection";
 
-const API_BASE_URL = "https://newsly-7mvn.onrender.com";
+const API_BASE_URL = "https://newsly-backend-2l4l.onrender.com";
 
 export default function MainPage() {
   const [articles, setArticles] = useState([]);
