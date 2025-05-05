@@ -26,7 +26,7 @@ export default function MainPage() {
 
   useEffect(() => {
     fetch(
-      "https://newsapi.org/v2/top-headlines/sources?apiKey=3d83b1afc782411490c8c8ebde73f320"
+      `https://corsproxy.io/?https://newsapi.org/v2/top-headlines/sources?apiKey=3d83b1afc782411490c8c8ebde73f320`
     )
       .then((res) => res.json())
       .then((data) => setSources(data.sources))
