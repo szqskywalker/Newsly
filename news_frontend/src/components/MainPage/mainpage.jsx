@@ -82,17 +82,24 @@ export default function MainPage() {
       return;
     }
 
-    const url = `${API_BASE_URL}/search_news/?${buildQueryParams()}`;
-    fetch(url, {
-      headers: {
-        "ngrok-skip-browser-warning": "true",
-      },
-    })
-      .then((res) => res.json())
+    // Construct actual NewsAPI endpoint
+    const actualNewsApiURL = `https://newsapi.org/v2/everything?${buildQueryParams()}&apiKey=3d83b1afc782411490c8c8ebde73f320`;
+
+    // Use AllOrigins proxy to bypass CORS
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(
+      actualNewsApiURL
+    )}`;
+
+    fetch(proxyUrl)
+      .then((res) => {
+        if (!res.ok) throw new Error("Network response was not ok");
+        return res.json();
+      })
       .then((data) => {
-        if (data.status === "error") throw new Error(data.message);
-        setArticles(data.articles || []);
-        setPage(1); // reset to first page
+        const parsed = JSON.parse(data.contents);
+        if (parsed.status === "error") throw new Error(parsed.message);
+        setArticles(parsed.articles || []);
+        setPage(1);
       })
       .catch((err) => alert("Error: " + err.message));
   };
