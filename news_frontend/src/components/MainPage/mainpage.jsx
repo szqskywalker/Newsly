@@ -13,12 +13,21 @@ export default function MainPage() {
 
   const [sources, setSources] = useState([]);
 
+  // useEffect(() => {
+  //   fetch(`${API_BASE_URL}/get_sources/`, {
+  //     headers: {
+  //       "ngrok-skip-browser-warning": "true",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setSources(data.sources))
+  //     .catch((err) => console.error("Error fetching sources:", err));
+  // }, []);
+
   useEffect(() => {
-    fetch(`${API_BASE_URL}/get_sources/`, {
-      headers: {
-        "ngrok-skip-browser-warning": "true",
-      },
-    })
+    fetch(
+      "https://newsapi.org/v2/top-headlines/sources?apiKey=3d83b1afc782411490c8c8ebde73f320"
+    )
       .then((res) => res.json())
       .then((data) => setSources(data.sources))
       .catch((err) => console.error("Error fetching sources:", err));
