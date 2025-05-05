@@ -74,7 +74,9 @@ def get_sources(request):
     api_key = "3d83b1afc782411490c8c8ebde73f320"
     url = f'https://newsapi.org/v2/top-headlines/sources?apiKey={api_key}'
     response = requests.get(url)
-    return JsonResponse(response.json())
+    data = response.json()
+    print(data)
+    return JsonResponse(data)
 
 @csrf_exempt
 def search_news(request):
