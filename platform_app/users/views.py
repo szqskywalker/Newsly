@@ -1,4 +1,4 @@
-
+import cloudscraper
 import os
 import requests
 from django.views.decorators.http import require_GET
@@ -70,21 +70,18 @@ def get_user(request):
 @require_GET
 @csrf_exempt
 def get_sources(request):
-    headers = {
-        "X-Api-Key": "3d83b1afc782411490c8c8ebde73f320",
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-            "(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-        )
+    scraper = cloudscraper.create_scraper()  # Handles Cloudflare challenge
+    url = "https://newsapi.org/v2/top-headlines/sources"
+    params = {
+        "apiKey": "3d83b1afc782411490c8c8ebde73f320"
     }
-    api_key = os.getenv('NEWS_API_KEY')
-    api_key = "3d83b1afc782411490c8c8ebde73f320"
-    url = f'https://newsapi.org/v2/top-headlines/sources?apiKey={api_key}'
-    response = requests.get(url, headers=headers)
-    print("RESPONSE==============", response.__dict__)
-    data = response.json()
-    print("DATA================", data)
-    return JsonResponse(data)
+
+    try:
+        res = scraper.get(url, params=params)
+        print(res)
+        return JsonResponse(res.json(), safe=False)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
 
 @csrf_exempt
 def search_news(request):
