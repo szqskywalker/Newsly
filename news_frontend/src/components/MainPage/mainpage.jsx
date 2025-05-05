@@ -13,25 +13,32 @@ export default function MainPage() {
 
   const [sources, setSources] = useState([]);
 
-  useEffect(() => {
-    fetch(`${API_BASE_URL}/get_sources/`, {
-      headers: {
-        "ngrok-skip-browser-warning": "true",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setSources(data.sources))
-      .catch((err) => console.error("Error fetching sources:", err));
-  }, []);
-
   // useEffect(() => {
-  //   fetch(
-  //     `https://corsproxy.io/?https://newsapi.org/v2/top-headlines/sources?apiKey=3d83b1afc782411490c8c8ebde73f320`
-  //   )
+  //   fetch(`${API_BASE_URL}/get_sources/`, {
+  //     headers: {
+  //       "ngrok-skip-browser-warning": "true",
+  //     },
+  //   })
   //     .then((res) => res.json())
   //     .then((data) => setSources(data.sources))
   //     .catch((err) => console.error("Error fetching sources:", err));
   // }, []);
+
+  useEffect(() => {
+    const apiURL =
+      "https://newsapi.org/v2/top-headlines/sources?apiKey=3d83b1afc782411490c8c8ebde73f320";
+
+    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(apiURL)}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Network response was not ok");
+        return res.json();
+      })
+      .then((data) => {
+        const parsed = JSON.parse(data.contents); // AllOrigins returns `contents` as string
+        setSources(parsed.sources);
+      })
+      .catch((err) => console.error("Error fetching sources:", err));
+  }, []);
 
   const [filters, setFilters] = useState({
     q: "",
