@@ -3,6 +3,7 @@ import FilterForm from "./filterform";
 import NewsTable from "./newstable";
 import SavedCollection from "./savedcollection";
 
+const API_KEY = "3d83b1afc782411490c8c8ebde73f320";
 const API_BASE_URL = "https://newsly-backend-2l4l.onrender.com";
 
 export default function MainPage() {
