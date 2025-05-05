@@ -23,18 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
-    "a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app",
-    "a620-2600-4041-44a7-d900-dcbd-f2a8-d5a9-ff44.ngrok-free.app",
-    "419a-155-246-151-34.ngrok-free.app",
-    "1f3e-2600-4041-44a7-d900-fc37-bec4-112e-12c1.ngrok-free.app",
-    "c9d5-2600-4041-44a7-d900-fc37-bec4-112e-12c1.ngrok-free.app",
-    "d8e3-155-246-151-34.ngrok-free.app",
-    "419a-155-246-151-34.ngrok-free.app",
-    "2c13-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app",
-    "a227-2600-4041-44a7-d900-789f-bdae-f2bd-d51a.ngrok-free.app",
     "localhost",
     "newsly-backend-2l4l.onrender.com"
 ]
